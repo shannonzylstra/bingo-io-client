@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
 import './App.css';
+import Chat from './Chat'
 
 function App () {
     let [ response, setResponse ] = useState(false);
@@ -11,6 +12,7 @@ function App () {
     socket.on("FromAPI", data => setResponse(data));
 
     return (
+      <div className='app'>
         <div style={{ textAlign: "center" }}>
           {response
               ? <p>
@@ -18,6 +20,10 @@ function App () {
               </p>
               : <p>Loading...</p>}
         </div>
+        <div className='chat'>
+          <Chat/>
+        </div>
+      </div>
     );
 }
 export default App;
