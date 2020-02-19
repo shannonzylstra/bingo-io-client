@@ -11,3 +11,5 @@ const Florence = (props) => {
         </div>
     )
 }
+
+export default Florence;
