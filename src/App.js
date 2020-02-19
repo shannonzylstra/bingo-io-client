@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
 import './App.css';
 import Chat from './Chat'
+import Florence from './components/Florence';
 
 function App () {
     let [ response, setResponse ] = useState(false);
@@ -13,13 +14,7 @@ function App () {
 
     return (
       <div className='app'>
-        <div style={{ textAlign: "center" }}>
-          {response
-              ? <p>
-                The temperature in Florence is: {response} °F
-              </p>
-              : <p>Loading...</p>}
-        </div>
+        <Florence response={response}/>
         <div className='chat'>
           <Chat socket={socket}/>
         </div>
