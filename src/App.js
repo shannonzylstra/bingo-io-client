@@ -21,7 +21,7 @@ function App () {
               : <p>Loading...</p>}
         </div>
         <div className='chat'>
-          <Chat/>
+          <Chat socket={socket}/>
         </div>
       </div>
     );
