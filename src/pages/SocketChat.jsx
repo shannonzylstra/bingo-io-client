@@ -61,7 +61,7 @@ function SocketChat () {
                 <br />
                 <div>
                     <label for="name">Name:</label>
-                    <input type="text" id="name" value="Anonymous" name="name"/>
+                    <input type="text" id="name" placeholder="Anonymous" name="name"/>
                 </div>
                 <br />
                 <button onClick={sayIt} className="btn btn-primary form-control" value="Say it!">Say it!</button>
