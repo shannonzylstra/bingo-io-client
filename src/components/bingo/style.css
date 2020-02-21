@@ -96,8 +96,11 @@
       grid-row: 4; }
     #board.wrapper .five {
       grid-row: 5; }
+    .after {
+      grid-row: 6;
+    }
     #board.wrapper .card {
-      color: #b8894c;
+      /* color: #b8894c; */
       font-weight: 300;
       /* font-family: "SkyFall Done"; */
       justify-content: center;
@@ -128,9 +131,9 @@
       #board.wrapper .card.unclicked {
         border: 2px solid #b8894c; }
       #board.wrapper .card.clicked {
-        transform: rotateY(180deg);
+        /* transform: rotateY(180deg); */
         background-size: 100% 100%; 
-        background-image: 
+        background-image: url("https://i.ya-webdesign.com/images/checkmark-clipart-green.png")
       }
         /* #board.wrapper .card.clicked.red {
           background-image: url(../img/codenames-red_agent-man.jpg); }
@@ -168,7 +171,7 @@
         border: 0px; }
   
   .clicked {
-    transform: rotateY(180deg);
+    /* transform: rotateY(180deg); */
     background-size: 100% 100%; }
     /* .clicked .red {
       background-image: url(../img/codenames-red_agent-man.jpg); }

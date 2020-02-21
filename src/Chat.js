@@ -13,7 +13,7 @@ function Chat (props) {
             console.log(data);
             addMessage(data);
         });    
-    });
+    }, [messages]);
 
     const sendMessage = ev => {
         ev.preventDefault();

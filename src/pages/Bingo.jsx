@@ -4,6 +4,7 @@ import Board from '../components/bingo/Board';
 import namor from 'namor';
 import { BrowserRouter as Router} from 'react-router-dom';
 import { Switch, Route, Link } from 'react-router-dom';
+import SocketChat from '../pages/SocketChat'
 import Chat from '../Chat';
 
 const Bingo = (props) => {
@@ -23,6 +24,26 @@ const Bingo = (props) => {
 
     let [ roomId, setRoomId ] = useState('');
 
+    const shuffle = function (array) {
+
+        var currentIndex = array.length;
+        var temporaryValue, randomIndex;
+      
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+      
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+      
+        return array;
+      };
+
     useEffect(() => {
         console.log('boardname:', boardname)
         if (window.location.pathname !== '/') {
@@ -37,7 +58,7 @@ const Bingo = (props) => {
         })
         .then(res => res.json())
         .then((res) => {
-            setCards(res[0].cards);
+            setCards(shuffle(res[0].cards.slice(0,25)));
             console.log('res.cards:', res[0].cards);
         })
         .catch(err => {
@@ -87,7 +108,6 @@ const Bingo = (props) => {
                     </Route>
                     <Route exact path={`/game/*`}>
                         <Board pathname={window.location.pathname} list={wordsList} socket={socket} cards={cards}/>
-                        <Chat socket={socket}/>
                     </Route>
                 </Switch>
             </Router>
