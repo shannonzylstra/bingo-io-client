@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 // import Home from './pages/Home';
 // import Demo from './pages/demo';
-// import SocketChat from './pages/SocketChat';
+import SocketChat from './pages/SocketChat';
 import Bingo from './pages/Bingo';
 // import Codenames from './pages/Codenames';
 
@@ -11,6 +11,7 @@ const Content = (props) => {
         <Switch>
             <Route exact path='/'>
                 <Bingo/>
+                <SocketChat/>
             </Route>
             <Route exact path={`/game/*`}>
                 <Bingo/>

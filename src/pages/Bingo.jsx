@@ -4,12 +4,14 @@ import Board from '../components/bingo/Board';
 import namor from 'namor';
 import { BrowserRouter as Router} from 'react-router-dom';
 import { Switch, Route, Link } from 'react-router-dom';
+import Chat from '../Chat';
 
 const Bingo = (props) => {
     let [ words, setWords ] = useState([]);
     let [ cards, setCards ] = useState([]);
     let [ wordsList, setWordsList ] = useState('');
     let [ endpoint, setEndpoint ] = useState("http://127.0.0.1:4001");
+    const boardname = window.location.pathname.split('/game/')[1];
 
     let [ room, setRoom ] = useState('');
 
@@ -19,8 +21,28 @@ const Bingo = (props) => {
     /* generate 3 words and no random characters */
     const name = namor.generate({ words: 1, saltLength: 6 })
 
+    let [ roomId, setRoomId ] = useState('');
+
     useEffect(() => {
+        console.log('boardname:', boardname)
+        if (window.location.pathname !== '/') {
+            setRoomId(window.location.pathname)
+        }
         console.log('Using effect!');
+        console.log('words/' + boardname);
+        fetch('http://localhost:4001/words/' + boardname, {
+            headers: {
+                'Origin': 'http://localhost:4001/'
+            }
+        })
+        .then(res => res.json())
+        .then((res) => {
+            setCards(res[0].cards);
+            console.log('res.cards:', res[0].cards);
+        })
+        .catch(err => {
+            console.log('Error:', err);
+        })
         // headers: {
         //     'Access-Control-Allow-Origin': '*'
         // }
@@ -41,7 +63,7 @@ const Bingo = (props) => {
             // })    
         socket.on("bingo", data => {
             // setWords(data.response);
-            setCards(data);
+            // setCards(data);
             // setWordsList(data.lists[0][0])
         });
         // socket.on("joinARoom", data => {
@@ -65,6 +87,7 @@ const Bingo = (props) => {
                     </Route>
                     <Route exact path={`/game/*`}>
                         <Board pathname={window.location.pathname} list={wordsList} socket={socket} cards={cards}/>
+                        <Chat socket={socket}/>
                     </Route>
                 </Switch>
             </Router>

@@ -23,7 +23,7 @@ const Board = (props) => {
 
     useEffect(() => {
         doSomethingWithSockets();
-    })
+    }, [])
 
     return (
         <div className="board">
