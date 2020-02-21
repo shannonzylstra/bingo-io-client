@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import socketIOClient from "socket.io-client";
-
+import Temperature from './components/darksky/Temperature';
 
 function Chat (props) {
     let [ username, setUsername ] = useState('');
@@ -32,6 +31,7 @@ function Chat (props) {
         console.log(messages);
     };
     console.log(message, messages, username)
+    
     return (
         <div className="container">
             <div className="row">
@@ -43,7 +43,7 @@ function Chat (props) {
                             <div className="messages">
                                 {messages.map(message => {
                                     return (
-                                        <div>{message.author}: {message.message}</div>
+                                        <div><strong>{message.author}</strong>: {message.message}</div>
                                     )
                                 })}                                
                             </div>

@@ -1,24 +1,17 @@
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
 import './App.css';
-import Chat from './Chat'
-import Florence from './components/Florence';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Content from './content';
 
-function App () {
-    let [ response, setResponse ] = useState(false);
-    let [ endpoint, setEndpoint ] = useState("http://127.0.0.1:4001");
-
-    // Socket Stuff
-    const socket = socketIOClient(endpoint);
-    socket.on("FromAPI", data => setResponse(data));
-
-    return (
-      <div className='app'>
-        <Florence response={response}/>
-        <div className='chat'>
-          <Chat socket={socket}/>
-        </div>
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Content/>
       </div>
-    );
+    </Router>
+  );
 }
+
 export default App;

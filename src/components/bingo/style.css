@@ -1,0 +1,181 @@
+/* Fonts */
+/* @font-face {
+    font-family: 'SkyFall Done';
+    src: url("../font/skyfall_done.ttf"); } */
+  
+  * {
+    box-sizing: border-box; }
+  
+  body {
+    background-color: white;
+    margin: 0 auto;
+    width: 90%;
+    padding: 1em;
+    height: 90%; }
+  
+  header h1 {
+    /* font-family: "SkyFall Done"; */
+    text-align: center;
+    color: black;
+    font-size: 8vw; }
+  
+  main {
+    display: grid;
+    justify-content: space-around; }
+    main button {
+      max-height: 100%;
+      min-width: auto; }
+  
+  .controlsWrapper,
+  .modeWrapper {
+    display: grid;
+    direction: row;
+    padding: .25em; }
+    .controlsWrapper .controls,
+    .modeWrapper .controls {
+      display: grid;
+      grid-template-areas: "score restart";
+      align-items: space-between; }
+      .controlsWrapper .controls .scoreWrapper,
+      .modeWrapper .controls .scoreWrapper {
+        grid-area: "score"; }
+      .controlsWrapper .controls .restartWrapper,
+      .modeWrapper .controls .restartWrapper {
+        grid-area: "restart";
+        display: grid;
+        direction: column;
+        align-items: center;
+        justify-content: right; }
+      .controlsWrapper .controls .scoreElement,
+      .modeWrapper .controls .scoreElement {
+        display: grid;
+        direction: column;
+        align-items: center; }
+        .controlsWrapper .controls .scoreElement #team1Score,
+        .controlsWrapper .controls .scoreElement #team2Score,
+        .modeWrapper .controls .scoreElement #team1Score,
+        .modeWrapper .controls .scoreElement #team2Score {
+          max-height: 5px;
+          min-width: 20px; }
+  
+  .modeWrapper {
+    grid-template-areas: "player spymaster";
+    align-items: space-between;
+    justify-content: center; }
+    .modeWrapper .mode {
+      justify-content: center;
+      align-items: center; }
+      .modeWrapper .mode #player {
+        grid-area: "player"; }
+      .modeWrapper .mode #spymaster {
+        grid-area: "spymaster"; }
+  
+  #board.wrapper {
+    display: grid;
+    max-width: 100%;
+    margin: .25em auto; }
+    #board.wrapper .one,
+    #board.wrapper .two,
+    #board.wrapper .three,
+    #board.wrapper .four,
+    #board.wrapper .five {
+      display: grid;
+      grid-gap: .5em;
+      grid-template-columns: repeat(5, minmax(.5em, 200px));
+      height: 5em;
+      max-width: minmax(50px, auto);
+      margin: .25em auto;
+      background-color: transparent; }
+    #board.wrapper .one {
+      grid-row: 1; }
+    #board.wrapper .two {
+      grid-row: 2; }
+    #board.wrapper .three {
+      grid-row: 3; }
+    #board.wrapper .four {
+      grid-row: 4; }
+    #board.wrapper .five {
+      grid-row: 5; }
+    #board.wrapper .card {
+      color: #b8894c;
+      font-weight: 300;
+      /* font-family: "SkyFall Done"; */
+      justify-content: center;
+      display: flex;
+      border-radius: 5px;
+      /* background-color: #f0c997; */
+      background-color: whitesmoke;
+      background-size: cover; }
+      #board.wrapper .card .cardWordWrapper {
+        max-width: minmax(50px, auto);
+        margin: .25em auto;
+        display: flex;
+        flex-flow: row wrap;
+        overflow-wrap: break-word; }
+        #board.wrapper .card .cardWordWrapper .cardWord {
+          display: flex;
+          flex: 1 auto;
+          max-width: 100%;
+          justify-content: center;
+          align-items: center;
+          min-height: 50px;
+          flex-flow: row wrap;
+          font-size: 1.75vw;
+          overflow-wrap: break-word;
+          /* color: #b8894c;  */
+          color: darkslategray;
+        }
+      #board.wrapper .card.unclicked {
+        border: 2px solid #b8894c; }
+      #board.wrapper .card.clicked {
+        transform: rotateY(180deg);
+        background-size: 100% 100%; 
+        background-image: 
+      }
+        /* #board.wrapper .card.clicked.red {
+          background-image: url(../img/codenames-red_agent-man.jpg); }
+        #board.wrapper .card.clicked.blue {
+          background-image: url(../img/codenames-blue_agent-woman.png); }
+        #board.wrapper .card.clicked.assassin {
+          background-image: url(../img/codenames-assassin.jpg); }
+        #board.wrapper .card.clicked.neutral {
+          background-image: url(../img/codenames-bystander.jpg); } */
+      #board.wrapper .card.spymaster.red, #board.wrapper .card.spymaster.blue, #board.wrapper .card.spymaster.assassin {
+        border: 0px; }
+      #board.wrapper .card.spymaster.red {
+        border: 2px solid red;
+        background-color: rgba(252, 168, 168, 0.7); }
+        #board.wrapper .card.spymaster.red .cardWord {
+          color: red; }
+        #board.wrapper .card.spymaster.red.revealed {
+          background: rgba(252, 168, 168, 0.7); }
+      #board.wrapper .card.spymaster.blue {
+        border: 2px solid blue;
+        background-color: rgba(167, 212, 243, 0.7); }
+        #board.wrapper .card.spymaster.blue .cardWord {
+          color: blue; }
+        #board.wrapper .card.spymaster.blue.revealed {
+          background: rgba(167, 212, 243, 0.7); }
+      #board.wrapper .card.spymaster.assassin {
+        background: black; }
+        #board.wrapper .card.spymaster.assassin .cardWord {
+          color: white; }
+      #board.wrapper .card.spymaster.neutral {
+        border: 0px solid #b8894c; }
+        #board.wrapper .card.spymaster.neutral.revealed {
+          background: #f0c997; }
+      #board.wrapper .card.spymaster.revealed {
+        border: 0px; }
+  
+  .clicked {
+    transform: rotateY(180deg);
+    background-size: 100% 100%; }
+    /* .clicked .red {
+      background-image: url(../img/codenames-red_agent-man.jpg); }
+    .clicked .blue {
+      background-image: url(../img/codenames-blue_agent-woman.png); }
+    .clicked .assassin {
+      background-image: url(../img/codenames-assassin.jpg); }
+    .clicked .neutral {
+      background-image: url(../img/codenames-bystander.jpg); } */
+  
