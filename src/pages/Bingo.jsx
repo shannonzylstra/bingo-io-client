@@ -11,7 +11,7 @@ const Bingo = (props) => {
     let [ words, setWords ] = useState([]);
     let [ cards, setCards ] = useState([]);
     let [ wordsList, setWordsList ] = useState('');
-    let [ endpoint, setEndpoint ] = useState("http://127.0.0.1:4001");
+    let [ endpoint, setEndpoint ] = useState("bingo-io-server.herokuapp.com");
     const boardname = window.location.pathname.split('/game/')[1];
 
     let [ room, setRoom ] = useState('');
