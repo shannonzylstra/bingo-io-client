@@ -51,7 +51,7 @@ const Bingo = (props) => {
         }
         console.log('Using effect!');
         console.log('words/' + boardname);
-        fetch('http://bingo-io-backend.herokuapp.com/words/' + boardname, {
+        fetch('http://bingo-io-server.herokuapp.com/words/' + boardname, {
             // headers: {
             //     'Origin': 'http://localhost:4001/'
             // }
