@@ -33,6 +33,11 @@ const Board = (props) => {
             <h2>{boardname}</h2>
             <div className="row col-12">
                 <div className="wrapper" id="board">
+                    <div>
+                        <span>Share this game with friends:</span>
+                        <br/>
+                        <span><Link to={`/game/${window.location.pathname.split('/game/')[1]}`}>{`bingo-io.herokuapp.com${window.location.pathname}`}</Link></span>
+                    </div>
                     <div className="one">
                         {props.cards.map((card, id) => {
                             return (
@@ -50,11 +55,8 @@ const Board = (props) => {
                     <div  className="three"></div>
                     <div className="four"></div>
                     {/* <div className="five"></div> */}
-                    <div>
-                        <span>Share this game with friends: <Link to={`/game/${window.location.pathname.split('/game/')[1]}`}>{`${window.location.pathname}`}</Link></span>
-                    </div>
                     <div className="after">
-                        <Chat socket={socket}/>
+                        {/* <Chat socket={socket}/> */}
                     </div>
                 </div>
             </div>

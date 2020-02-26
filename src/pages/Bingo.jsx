@@ -20,7 +20,7 @@ const Bingo = (props) => {
     const socket = socketIOClient(endpoint);
 
     /* generate 3 words and no random characters */
-    const name = namor.generate({ words: 1, saltLength: 6 })
+    const name = namor.generate({ words: 2, saltLength: 0 })
 
     let [ roomId, setRoomId ] = useState('');
 
