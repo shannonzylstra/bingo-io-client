@@ -11,11 +11,9 @@ const Content = (props) => {
         <Switch>
             <Route exact path='/'>
                 <Bingo/>
-                {/* <SocketChat/> */}
             </Route>
             <Route exact path={`/game/*`}>
                 <Bingo/>
-                {/* <SocketChat/> */}
             </Route>
             {/* <Route path="/123456">
                 <Board pathname={window.location.pathname} list={wordsList} socket={socket} cards={cards}/>

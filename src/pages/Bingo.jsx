@@ -20,7 +20,7 @@ const Bingo = (props) => {
     const socket = socketIOClient(endpoint);
 
     /* generate 3 words and no random characters */
-    const name = namor.generate({ words: 2, saltLength: 0 })
+    const name = namor.generate({ words: 0, saltLength: 6 })
 
     let [ roomId, setRoomId ] = useState('');
 
@@ -51,7 +51,8 @@ const Bingo = (props) => {
         }
         console.log('Using effect!');
         console.log('words/' + boardname);
-        fetch('http://localhost:4001/words/' + boardname, {
+        // fetch('http://bingo-io-server.herokuapp.com/words/' + boardname, {
+        fetch('http://bingo-io-server.herokuapp.com/words/' + 'election', {
             // headers: {
             //     'Origin': 'http://localhost:4001/'
             // }
@@ -104,7 +105,7 @@ const Bingo = (props) => {
             <Router>
                 <Switch>
                     <Route exact path="/">
-                        <Link to={`/game/${name}`}>{`/game/${name}`}</Link>                    
+                        <Link to={`/game/${name}`}>Play debate night bingo!</Link>                    
                     </Route>
                     <Route exact path={`/game/*`}>
                         <Board pathname={window.location.pathname} list={wordsList} socket={socket} cards={cards}/>
