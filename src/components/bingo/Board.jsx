@@ -30,7 +30,7 @@ const Board = (props) => {
 
     return (
         <div className="board container">
-            <h2>{boardname}</h2>
+            <h2>Debate Bingo</h2>
             <div className="row col-12">
                 <div className="wrapper" id="board">
                     <div>
