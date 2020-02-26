@@ -30,14 +30,14 @@ const Board = (props) => {
 
     return (
         <div className="board container">
-            <h2>Debate Bingo</h2>
+            {/* <h2>Debate Bingo</h2> */}
             <div className="row col-12">
                 <div className="wrapper" id="board">
-                    <div>
+                    {/* <div>
                         <span>Share this game with friends:</span>
                         <br/>
                         <span><Link to={`/game/${window.location.pathname.split('/game/')[1]}`}>{`bingo-io.herokuapp.com${window.location.pathname}`}</Link></span>
-                    </div>
+                    </div> */}
                     <div className="one">
                         {props.cards.map((card, id) => {
                             return (
