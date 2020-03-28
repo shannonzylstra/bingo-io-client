@@ -9,7 +9,7 @@ const Board = (props) => {
 
     const socket = props.socket;
     const pathname = window.location.pathname;
-    const id = socket.id;
+    // const id = socket.id; // just grab socket.id instead in doSomethingWithSockets()
     const boardname = pathname.split('/game/')[1];
 
     function handleClick(e) {
@@ -21,7 +21,7 @@ const Board = (props) => {
     
     function doSomethingWithSockets() {
         console.log(socket);
-        console.log(pathname + `/${id}`);
+        console.log(pathname + `/${socket.id}`); // just grab socket.id instead of const id
     }
 
     useEffect(() => {
