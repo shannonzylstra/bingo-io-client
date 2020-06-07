@@ -8,9 +8,10 @@ import { Switch, Route, Link } from 'react-router-dom';
 const Board = (props) => {
 
     const socket = props.socket;
-    const pathname = window.location.pathname;
+    let [ path, setPath ] = useState(window.location.pathname);
     // const id = socket.id; // just grab socket.id instead in doSomethingWithSockets()
-    const boardname = pathname.split('/game/')[1];
+    // const boardname = window.location.pathname.split('/game/')[1];
+    const boardname = path.split('/game/')[1];
 
     function handleClick(e) {
         let target;
@@ -18,10 +19,10 @@ const Board = (props) => {
         console.log(target.getAttribute('cardnum'));
         target.classList.add('clicked');
     }
-    
+
     function doSomethingWithSockets() {
         console.log(socket);
-        console.log(pathname + `/${socket.id}`); // just grab socket.id instead of const id
+        console.log(path + `/${socket.id}`); // just grab socket.id instead of const id
     }
 
     useEffect(() => {
@@ -75,7 +76,7 @@ function Chat (props) {
         socketIo.on('RECEIVE_MESSAGE', function(data){
             console.log(data);
             addMessage(data);
-        });    
+        });
     }, [message, messages]);
 
     const sendMessage = ev => {
@@ -87,14 +88,14 @@ function Chat (props) {
         });
         setMessage('');
     }
-    
+
     const addMessage = data => {
         console.log(data);
         setMessages([...messages, data]);
         console.log(messages);
     };
     console.log(message, messages, username)
-    
+
     return (
         <div className="containerz">
             <div className="rowz">
@@ -108,7 +109,7 @@ function Chat (props) {
                                     return (
                                         <div><strong>{message.author}</strong>: {message.message}</div>
                                     )
-                                })}                                
+                                })}
                             </div>
                         </div>
                         <div className="card-footer">
