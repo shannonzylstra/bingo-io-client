@@ -28,29 +28,30 @@ const Bingo = (props) => {
 
         var currentIndex = array.length;
         var temporaryValue, randomIndex;
-      
+
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
             // Pick a remaining element...
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex -= 1;
-      
+
             // And swap it with the current element.
             temporaryValue = array[currentIndex];
             array[currentIndex] = array[randomIndex];
             array[randomIndex] = temporaryValue;
         }
-      
+
         return array;
       };
 
     useEffect(() => {
-        console.log('boardname:', boardname)
         if (window.location.pathname !== '/') {
             setRoomId(window.location.pathname)
+            console.log('boardname:', boardname)
+            console.log('words/' + boardname);
+            console.log('words/' + window.location.pathname.split('/game/')[1]);
         }
         console.log('Using effect!');
-        console.log('words/' + boardname);
         // fetch('http://bingo-io-server.herokuapp.com/words/' + boardname, {
         fetch('http://bingo-io-server.herokuapp.com/words/' + 'election', {
             // headers: {
@@ -82,7 +83,7 @@ const Bingo = (props) => {
             // })
             // .catch(err => {
             //     console.log('Error shoot:', err);
-            // })    
+            // })
         socket.on("bingo", data => {
             // setWords(data.response);
             // setCards(data);
@@ -105,10 +106,14 @@ const Bingo = (props) => {
             <Router>
                 <Switch>
                     <Route exact path="/">
-                        <Link to={`/game/${name}`}>Play debate night bingo!</Link>                    
+                        <Link to={`/game/${name}`}>Play debate night bingo!</Link>
                     </Route>
                     <Route exact path={`/game/*`}>
-                        <Board pathname={window.location.pathname} list={wordsList} socket={socket} cards={cards}/>
+                        <Board
+                          pathname={window.location.pathname}
+                          list={wordsList}
+                          socket={socket}
+                          cards={cards}/>
                     </Route>
                 </Switch>
             </Router>
